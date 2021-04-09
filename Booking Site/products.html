@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="./scripts/myjscripts.js"></script>
+</head>
+<body onload="createTable()">
+
+<div class="container mt-3">
+   <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <input type="search" id="searchbar" placeholder="Enter text to search" class="form-control  mt-3" onkeyup="mSearch()">
+
+  <table id = "studentTable"class="table table-primary mt-3">
+    <thead>
+        <tr>
+            <th>SID</th>
+            <th>Full Name</th>
+            <th>Phone</th>
+            <th>Edit</th>
+        </tr>
+    <!-- </thead>
+    <tbody>
+        <tr>
+            <td>0</td>
+            <td>Alice Brown</td>
+            <td>01039474683</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Jaspreet</td>
+            <td>0103124683</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Manu Rewa</td>
+            <td>087018348</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Vinod Blah</td>
+            <td>1098436378</td>
+        </tr>
+
+     
+
+    </tbody> -->
+  </table>
+</div>
+
+</body>
+</html>
