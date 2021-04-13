@@ -15,6 +15,24 @@ function showHomeSectionOnly(){
     document.getElementById("about").style.display = "none";
 }
 
+// show booking details div
+function showBookingDetails() {
+    var bookingDetails = document.getElementById("bookingDetails");
+    if(bookingDetails.style.display === "none"){
+        bookingDetails.style.display = "block";
+    }
+    document.getElementById("bookingAboutYou").style.display = "none";
+}
+
+// show booking about you div
+function showBookingAboutYou() {
+    var bookingAboutYou = document.getElementById("bookingAboutYou");
+    if(bookingAboutYou.style.display === "none"){
+        bookingAboutYou.style.display = "block";
+    }
+    document.getElementById("bookingDetails").style.display = "none";
+}
+
 var text = '{"employees":[' +
 '{"fullName":"John","phone":"12341241" },' +
 '{"fullName":"Anna","phone":"357358" },' +

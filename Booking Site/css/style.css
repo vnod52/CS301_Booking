@@ -1,6 +1,11 @@
 body, html {
     height: 100%;
   }
+  
+    /* standard booking form btns */
+  #btnbooking {
+    width: 100PX;
+  }
 
   .bg { 
     /* The image used */
