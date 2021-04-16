@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/myjscripts.js"></script>
+    <script type="text/javascript" src="./js/myjscripts.js"></script>
 </head>
 
 <body class="bg" )>
@@ -54,13 +54,15 @@
                 <b><i>About you</i> </b>
             </div>
             <div class="form-group mt-2">
-                <input type="text" class="form-control" id="txtFirstName" placeholder="First name">
+                <input type="text" class="form-control" id="txtFirstName" placeholder="First name" required>
                 <br>
                 <input type="text" class="form-control" id="txtLastName" placeholder="Last name">
                 <br>
                 <input type="tel" class="form-control" id="txtPhone" placeholder="Phone number">
                 <br>
                 <input type="email" class="form-control" id="txtEmail" placeholder="name@example.com">
+            
+                <a class="nav-link text-center text-white-50" onclick="showTermsAndConditions()">Terms and conditions</a>
                 <br>
                 <button type="button" id="btnbooking" class="btn btn-primary float-right"
                     onclick="showBookingDetails()">Next</button>
@@ -81,11 +83,14 @@
                 <b><i>Booking details</i> </b>
             </div>
             <div class="form-group mt-2">
-                <input type="date" class="form-control" id="txtArrivalDate" placeholder="Arrival date">
+                <label for="txtArrivalDate" class="text-white-50">Check-In</label>
+                <input type="date" class="form-control" id="txtArrivalDate" data-date-format="dd/mm/yyyy" placeholder="Check-In">
                 <br>
-                <input type="date" class="form-control" id="txtDepartureDate" placeholder="Departure date">
+                <label for="txtDepartureDate" class="text-white-50">Check-Out</label>
+                <input type="date" class="form-control" id="txtDepartureDate" data-date-format="dd/mm/yyyy" placeholder="Check-out">
                 <br>
-                <input type="tel" min="0" max="20" class="form-control" id="txtGuests" placeholder="Number of guests">
+                <label for="txtGuests" class="text-white-50">Number of guests</label>
+                <input type="tel" min="0" max="20" class="form-control" id="txtGuests" placeholder="0">
                 <br>
 
 
@@ -124,10 +129,12 @@
                     <label class="text-white"><b>Email: &nbsp</b></label><label id="lblEmail">email</label>
                 </div>
                 <div class="form-inline text-white-50">
-                    <label class="text-white"><b>Arrival Date: &nbsp</b></label><label id="lblArrivalDate">arrival</label>
+                    <label class="text-white"><b>Check-In: &nbsp</b></label><label
+                        id="lblArrivalDate">arrival</label>
                 </div>
                 <div class="form-inline text-white-50">
-                    <label class="text-white"><b>Departure Date: &nbsp</b></label><label id="lblDepartureDate">departure</label>
+                    <label class="text-white"><b>Check-Out: &nbsp</b></label><label
+                        id="lblDepartureDate">departure</label>
                 </div>
                 <div class="form-inline text-white-50">
                     <label class="text-white"><b>No of guests: &nbsp</b></label> <label id="lblGuests">guests</label>
@@ -135,11 +142,52 @@
                 <br>
                 <button type="button" id="btnbooking" class="btn btn-primary float-left"
                     onclick="showBookingDetails()">Previous</button>
-                <button type="button" id="btnbooking" class="btn btn-primary float-right"
-                    onclick="showBookingDetails()">Pay Now</button>
+                <button type="button" id="btnbooking" class="btn btn-primary float-right" onclick="writedata()">Pay
+                    Now</button>
             </div>
         </div>
     </div>
+
+        <!------------------------- Confirmed ------------------------->
+        <div class="container" id="confirmation" style="display: none;">
+            <div class="float-left p-4 rounded" style="width: 450px; background-color: rgba(0, 0, 0, 0.400);">
+                <h3 class="text-light">Make a Booking</h3>
+                <div class="text-white-50">
+    
+                    <div class="progress mb-2">
+                        <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="75" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                    <b class="text-success">Booking confirmed!</b>
+                    <p>We are pleased to inform you your reservation has been confirmed</p>
+                </div>
+                <div class="form-group mt-2">
+                     <br>
+                    <button type="button" id="btnbooking" class="btn btn-primary float-right" onclick="goHome()">Ok</button>
+                </div>
+            </div>
+        </div>
+        <!------------------------- Terms and conditions ------------------------->
+        <div class="container" id="termsAndConditions" style="display: none;">
+            <div class="float-left p-4 rounded" style="width: 450px; background-color: rgba(0, 0, 0, 0.400);">
+                <h5 class="text-light">Terms and Conditions</h5>
+                <div class="text-white-50">
+                    <p>Introduction: purpose of document: governing bookings; express agreement to document upon order; no abridgment of consumer statutory rights.
+                        Interpretation: informal definitions for booking terms and conditions.
+                        Order process: booking advertisement as invitation to treat; no contracts except in accordance with order process; bookings order process; input error correction and identification.
+                        Prices: prices quoted on website; prices changes on website; amounts inclusive or exclusive of VAT.
+                        Payments: payment of booking prices; methods of paying prices.
+                        Variation of booking: variation of booking by customer; variation of booking by operator.
+                        Cancellation of bookings by us: cancellation windows and refunds; method of cancellation; full refund upon cancellation under section.
+                        Cancellation of bookings by you: rights additional to statutory rights; cancellation windows and refunds; method of cancellation; default no refunds on cancellation.
+                   </p>
+                </div>
+                <div class="form-group mt-2">
+                     <br>
+                    <button type="button" id="btnbooking" class="btn btn-primary float-right" onclick="showBookingAboutYou()">Ok</button>
+                </div>
+            </div>
+        </div>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-firestore.js"></script>
@@ -163,37 +211,34 @@
 
         var db = firebase.firestore();
 
-
-
         function writedata() {
-            //read data firestore
-            var employees = db.collection("employees");
-            employees.get().then(function (querySnapshot) {
-                querySnapshot.forEach(employees => {
-                    console.log("Born: " + employees.data().fullName,
-                        "\nfirst: " + employees.data().phone);
-
+            //write data firestore 
+            db.collection("Booking").add({
+                FirstName: fName,
+                LastName: lName,
+                Phone: phone,
+                Email: email,
+                ArrivalDate: arrivalDate,
+                DepartureDate: departureDate,
+                Guests:guests
+            })
+                .then((docRef) => {
+                    console.log("Document written with ID: ", docRef.id);
+                    showBookingConfirmation();
+                })
+                .catch((error) => {
+                    console.error("Error adding document: ", error);
                 });
-            });
 
-            // //write data firestore 
-            // db.collection("users").add({
-            //     first: "Ada",
-            //     last: "Lovelace",
-            //     born: 1815
-            // })
-            //     .then((docRef) => {
-            //         console.log("Document written with ID: ", docRef.id);
-            //     })
-            //     .catch((error) => {
-            //         console.error("Error adding document: ", error);
-            //     });
+            //read data firestore
+            //  var employees = db.collection("employees");
+            //  employees.get().then(function (querySnapshot) {
+            //      querySnapshot.forEach(employees => {
+            //          console.log("Born: " + employees.data().fullName,
+            //              "\nfirst: " + employees.data().phone);
+            //      });
+            //  });
 
-            //write to firebase
-            // firebase.database().ref("User").push({
-            //     firstname: document.getElementById("firstname").value,
-            //     lastname: document.getElementById("lastname").value
-            // });
         }
     </script>
 
