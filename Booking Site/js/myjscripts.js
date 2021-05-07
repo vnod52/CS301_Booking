@@ -16,6 +16,7 @@ function showBookingDetails() {
     document.getElementById("bookingAboutYou").style.display = "none";
     document.getElementById("bookingPayment").style.display = "none";
     document.getElementById("termsAndConditions").style.display = "none";
+    console.log("Why you not working!!!")
 
 }
 
@@ -57,7 +58,7 @@ function showBookingPayment() {
 
 }
 
-// show about you booking div
+// show confirmation div
 function showBookingConfirmation() {
     var bookingConfirmation = document.getElementById("confirmation");
     if(bookingConfirmation.style.display === "none"){
@@ -67,10 +68,9 @@ function showBookingConfirmation() {
     document.getElementById("bookingPayment").style.display = "none";
     document.getElementById("bookingAboutYou").style.display = "none";
     document.getElementById("termsAndConditions").style.display = "none";
-
 }
 
-// show about you booking div
+// show terms and conditions div
 function showTermsAndConditions() {
     var bookingTermsAndConditions = document.getElementById("termsAndConditions");
     if(bookingTermsAndConditions.style.display === "none"){
