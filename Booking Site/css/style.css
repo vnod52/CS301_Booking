@@ -55,10 +55,10 @@ body, html {
     list-style-type: none;
     width: 25%;
     float: left;
-    font-size: 9.5px;
+    font-size: 12px;
     position: relative;
     text-align: center;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     color: #ffffff;
 }
 .progressbar li:before {
@@ -95,4 +95,9 @@ body, html {
 }
 .progressbar li.active + li:after {
     background-color: #41be31
+}
+
+.errorLabel {
+  color: rgb(255, 136, 0);
+  font-size: small;
 }
