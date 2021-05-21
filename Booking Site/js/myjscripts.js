@@ -1,6 +1,6 @@
 
 //Global booking variables
-var fName, lName, phone, email, arrivalDate, departureDate, guests; 
+var fName, lName, phone, email, checkInDate, checkOutDate, guests, localchkInDay, localchkOutDay;
 
 // show booking details div and save user inputs
 function showBookingDetails() {
@@ -46,23 +46,23 @@ function showBookingAboutYou() {
 // show booking payment div and and confirmation details
 function showBookingPayment() {
     //save user booking detail input
-    arrivalDate = document.getElementById("txtArrivalDate").value;
-    departureDate = document.getElementById("txtDepartureDate").value;
+    checkInDate = document.getElementById("txtArrivalDate").value;
+    checkOutDate = document.getElementById("txtDepartureDate").value;
     guests = document.getElementById("txtGuests").value;
 
     //Get day for date and convert to int
-    let date1 = new Date(arrivalDate);
-    let date2 = new Date(departureDate);
-    let x = parseInt(date1.getDate().toString());
-    let y = parseInt(date2.getDate().toString());
+    localchkInDay = new Date(checkInDate);
+    localchkOutDay = new Date(checkOutDate);
+    let x = parseInt(localchkInDay.getDate().toString());
+    let y = parseInt(localchkOutDay.getDate().toString());
 
     //form validation
-    if (arrivalDate == "" || departureDate == "" || guests == "" || y - x <= 0) {
+    if (checkInDate == "" || checkOutDate == "" || guests == "" || y - x <= 0) {
 
-        let aError = (arrivalDate == "") ? "Arrival date required" : "";
+        let aError = (checkInDate == "") ? "Arrival date required" : "";
         document.getElementById("arrivalDateError").innerHTML = aError;
-        if(departureDate < arrivalDate) document.getElementById("departDateError").innerHTML = "dError";
-        let dError = (departureDate == "") ? "Departure date required" : "";
+        if (checkOutDate < checkInDate) document.getElementById("departDateError").innerHTML = "dError";
+        let dError = (checkOutDate == "") ? "Departure date required" : "";
         document.getElementById("departDateError").innerHTML = dError;
         let gError = (guests == "") ? "No of guests required" : "";
         document.getElementById("guestError").innerHTML = gError;
@@ -70,7 +70,7 @@ function showBookingPayment() {
         if (y - x <= 0) {
             document.getElementById("departDateError").innerHTML = "Departure date can't be earlier or same as arrival date";
         }
-        
+
     } else {
         var bookingPayment = document.getElementById("bookingPayment");
         if (bookingPayment.style.display === "none") {
@@ -85,8 +85,8 @@ function showBookingPayment() {
     document.getElementById("lblLastName").textContent = lName;
     document.getElementById("lblPhone").textContent = phone;
     document.getElementById("lblEmail").textContent = email;
-    document.getElementById("lblArrivalDate").textContent = arrivalDate;
-    document.getElementById("lblDepartureDate").textContent = departureDate;
+    document.getElementById("lblArrivalDate").textContent = checkInDate;
+    document.getElementById("lblDepartureDate").textContent = checkOutDate;
     document.getElementById("lblGuests").textContent = guests;
 }
 
@@ -115,7 +115,7 @@ function showTermsAndConditions() {
 
 //go to homepage
 function goHome() {
-    document.location.href = "/index.html";
+    document.location.href = "./index.html";
 }
 
 //reset all error messages

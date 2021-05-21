@@ -11,10 +11,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <script type="text/javascript" src="./js/myjscripts.js"></script>
-    <script type="text/javascript" src="./js/validator.js"></script>
 </head>
 
-<body class="bg" )>
+<body class="bg">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin:24px 0;">
             <a class="navbar-brand text-white-50" href="./index.html">Campbells Bach</a>
@@ -33,6 +32,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./booking.html">Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./availability.html">Availability</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./contact.html">Contact Us</a>
@@ -130,26 +132,26 @@
             </div>
 
             <div class="form-group mt-2">
-                <div class="form-inline text-white-50">
+                <div class="form-inline text-white">
                     <label class="text-white"><b>First Name: &nbsp</b></label><label id="lblFirstName">firstname</label>
                 </div>
-                <div class="form-inline text-white-50">
+                <div class="form-inline text-white">
                     <label class="text-white"><b>Last Name: &nbsp</b></label><label id="lblLastName">lastname</label>
                 </div>
-                <div class="form-inline text-white-50">
+                <div class="form-inline text-white">
                     <label class="text-white"><b>Phone: &nbsp</b></label><label id="lblPhone">phone</label>
                 </div>
-                <div class="form-inline text-white-50">
+                <div class="form-inline text-white">
                     <label class="text-white"><b>Email: &nbsp</b></label><label id="lblEmail">email</label>
                 </div>
-                <div class="form-inline text-white-50">
+                <div class="form-inline text-white">
                     <label class="text-white"><b>Check-In: &nbsp</b></label><label id="lblArrivalDate">arrival</label>
                 </div>
-                <div class="form-inline text-white-50">
+                <div class="form-inline text-white">
                     <label class="text-white"><b>Check-Out: &nbsp</b></label><label
                         id="lblDepartureDate">departure</label>
                 </div>
-                <div class="form-inline text-white-50">
+                <div class="form-inline text-white">
                     <label class="text-white"><b>No of guests: &nbsp</b></label> <label id="lblGuests">guests</label>
                 </div>
                 <br>
@@ -183,6 +185,7 @@
             </div>
         </div>
     </div>
+
     <!------------------------- Terms and conditions ------------------------->
     <div class="container" id="termsAndConditions" style="display: none;">
         <div class="float-left p-4 rounded" style="width: 450px; background-color: rgba(0, 0, 0, 0.400);">
@@ -208,7 +211,9 @@
                     onclick="showBookingAboutYou()">Ok</button>
             </div>
         </div>
+        
     </div>
+    
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-firestore.js"></script>
@@ -239,8 +244,8 @@
                 LastName: lName,
                 Phone: phone,
                 Email: email,
-                ArrivalDate: arrivalDate,
-                DepartureDate: departureDate,
+                CheckInDate: checkInDate,
+                CheckOutDate: checkOutDate,
                 Guests: guests
             })
                 .then((docRef) => {
@@ -250,16 +255,20 @@
                 .catch((error) => {
                     console.error("Error adding document: ", error);
                 });
+        }
 
+        function checkAvailability() {
             //read data firestore
-            //  var employees = db.collection("employees");
-            //  employees.get().then(function (querySnapshot) {
-            //      querySnapshot.forEach(employees => {
-            //          console.log("Born: " + employees.data().fullName,
-            //              "\nfirst: " + employees.data().phone);
-            //      });
-            //  });
+            var bookings = db.collection("Booking");
 
+              bookings.get().then(function (querySnapshot) {
+                  querySnapshot.forEach(bookings => {
+                    console.log("Name: " + bookings.data().FirstName, "\nPhone: " + bookings.data().CheckInDate);
+                          if(bookings.data().CheckInDate == checkInDate) {
+                            console.log("Not Available");
+                          } 
+                  });
+              });
         }
     </script>
 
