@@ -4,6 +4,57 @@ var fName, lName, phone, email, checkInDate, checkOutDate, guests, localchkInDay
 
 // show booking details div and save user inputs
 function showBookingDetails() {
+
+    var bookingDetails = document.getElementById("bookingDetails");
+    if (bookingDetails.style.display === "none") {
+        bookingDetails.style.display = "block";
+    }
+    document.getElementById("bookingAboutYou").style.display = "none";
+    document.getElementById("bookingPayment").style.display = "none";
+    document.getElementById("termsAndConditions").style.display = "none";
+    resetErrorMsg();
+}
+
+// show about you booking div
+function showBookingAboutYou() {
+    //save user booking detail input
+    checkInDate = document.getElementById("txtArrivalDate").value;
+    checkOutDate = document.getElementById("txtDepartureDate").value;
+    guests = document.getElementById("txtGuests").value;
+
+    //Get day for date and convert to int
+    localchkInDay = new Date(checkInDate);
+    localchkOutDay = new Date(checkOutDate);
+    //Zero out time stamp to compare only date
+    localchkInDay.setHours(0, 0, 0, 0);
+    localchkOutDay.setHours(0, 0, 0, 0);
+
+    //form validation
+    if (checkInDate == "" || checkOutDate == "" || guests == "" || localchkOutDay - localchkInDay <= 0) {
+        let aError = (checkInDate == "") ? "Arrival date required" : "";
+        document.getElementById("arrivalDateError").innerHTML = aError;
+        if (checkOutDate < checkInDate) document.getElementById("departDateError").innerHTML = "dError";
+        let dError = (checkOutDate == "") ? "Departure date required" : "";
+        document.getElementById("departDateError").innerHTML = dError;
+        let gError = (guests == "") ? "No of guests required" : "";
+        document.getElementById("guestError").innerHTML = gError;
+
+        if (localchkOutDay - localchkInDay <= 0) {
+            document.getElementById("departDateError").innerHTML = "Departure date can't be earlier or same as arrival date";
+        }
+    } else {
+        var bookingAboutYou = document.getElementById("bookingAboutYou");
+        if (bookingAboutYou.style.display === "none") {
+            bookingAboutYou.style.display = "block";
+        }
+        document.getElementById("bookingDetails").style.display = "none";
+        document.getElementById("bookingPayment").style.display = "none";
+        document.getElementById("termsAndConditions").style.display = "none";
+    }
+}
+
+// show booking payment div and and confirmation details
+function showBookingPayment() {
     fName = document.getElementById("txtFirstName").value;
     lName = document.getElementById("txtLastName").value;
     phone = document.getElementById("txtPhone").value;
@@ -19,58 +70,6 @@ function showBookingDetails() {
         document.getElementById("phoneError").innerHTML = pError;
         let eError = (email == "") ? "Email is required!" : "";
         document.getElementById("emailError").innerHTML = eError;
-    } else {
-        var bookingDetails = document.getElementById("bookingDetails");
-        if (bookingDetails.style.display === "none") {
-            bookingDetails.style.display = "block";
-        }
-        document.getElementById("bookingAboutYou").style.display = "none";
-        document.getElementById("bookingPayment").style.display = "none";
-        document.getElementById("termsAndConditions").style.display = "none";
-        resetErrorMsg();
-    }
-}
-
-// show about you booking div
-function showBookingAboutYou() {
-    var bookingAboutYou = document.getElementById("bookingAboutYou");
-    if (bookingAboutYou.style.display === "none") {
-        bookingAboutYou.style.display = "block";
-    }
-    document.getElementById("bookingDetails").style.display = "none";
-    document.getElementById("bookingPayment").style.display = "none";
-    document.getElementById("termsAndConditions").style.display = "none";
-
-}
-
-// show booking payment div and and confirmation details
-function showBookingPayment() {
-    //save user booking detail input
-    checkInDate = document.getElementById("txtArrivalDate").value;
-    checkOutDate = document.getElementById("txtDepartureDate").value;
-    guests = document.getElementById("txtGuests").value;
-
-    //Get day for date and convert to int
-    localchkInDay = new Date(checkInDate);
-    localchkOutDay = new Date(checkOutDate);
-    let x = parseInt(localchkInDay.getDate().toString());
-    let y = parseInt(localchkOutDay.getDate().toString());
-
-    //form validation
-    if (checkInDate == "" || checkOutDate == "" || guests == "" || y - x <= 0) {
-
-        let aError = (checkInDate == "") ? "Arrival date required" : "";
-        document.getElementById("arrivalDateError").innerHTML = aError;
-        if (checkOutDate < checkInDate) document.getElementById("departDateError").innerHTML = "dError";
-        let dError = (checkOutDate == "") ? "Departure date required" : "";
-        document.getElementById("departDateError").innerHTML = dError;
-        let gError = (guests == "") ? "No of guests required" : "";
-        document.getElementById("guestError").innerHTML = gError;
-
-        if (y - x <= 0) {
-            document.getElementById("departDateError").innerHTML = "Departure date can't be earlier or same as arrival date";
-        }
-
     } else {
         var bookingPayment = document.getElementById("bookingPayment");
         if (bookingPayment.style.display === "none") {

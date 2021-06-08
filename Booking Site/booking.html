@@ -44,48 +44,15 @@
         </nav>
         <br>
     </div>
-    <!------------------------- About you ------------------------->
-    <div class="container" id="bookingAboutYou">
+
+      <!------------------------- Booking details ------------------------->
+      <div class="container" id="bookingDetails">
         <div class="float-left p-4 rounded" style="width: 450px; background-color: rgba(0, 0, 0, 0.400);">
             <h3 class="text-light text-center">Make a Booking</h3>
 
             <ul class="progressbar container-md">
-                <li class="active">Your Details</li>
-                <li>Booking Details</li>
-                <li>Payment</li>
-                <li>Confirmation</li>
-            </ul>
-            <br><br>
-
-            <div class="form-group mt-4">
-                    <input type="text" class="form-control" id="txtFirstName" placeholder="First name" required>
-                    <label for="txtFirstName" class="errorLabel" id="fNameError"></label>
-                    <br>
-                    <input type="text" class="form-control" id="txtLastName" placeholder="Last name" required>
-                    <label for="txtLastName" class="errorLabel" id="lNameError"></label>
-                    <br>
-                    <input type="tel" class="form-control" id="txtPhone" placeholder="Phone number" required>
-                    <label for="txtPhone" class="errorLabel" id="phoneError"></label>
-                    <br>
-                    <input type="email" class="form-control" id="txtEmail" placeholder="name@example.com" required>
-                    <label for="txtEmail" class="errorLabel" id="emailError"></label>
-                    <a class="nav-link text-center text-white-50" onclick="showTermsAndConditions()">Terms and
-                        conditions</a>
-                    <br>
-                    <button type="submit" id="btnbooking" class="btn btn-primary float-right"
-                        onclick="showBookingDetails()">Next</button>
-            </div>
-        </div>
-    </div>
-
-    <!------------------------- Booking details ------------------------->
-    <div class="container" id="bookingDetails" style="display: none;">
-        <div class="float-left p-4 rounded" style="width: 450px; background-color: rgba(0, 0, 0, 0.400);">
-            <h3 class="text-light text-center">Make a Booking</h3>
-
-            <ul class="progressbar container-md">
-                <li class="active" onclick="showBookingAboutYou()">Your Details</li>
                 <li class="active" onclick="showBookingDetails()">Booking Details</li>
+                <li>Your Details</li>
                 <li>Payment</li>
                 <li>Confirmation</li>
             </ul>
@@ -93,35 +60,70 @@
 
             <div class="form-group mt-1">
                 <label for="txtArrivalDate" class="text-white">Check-In</label>
-                <input type="date" class="form-control" id="txtArrivalDate" data-date-format="dd/mm/yyyy" placeholder="Check-In">
+                <input type="date" class="form-control" id="txtArrivalDate" data-date-format="dd/mm/yyyy"
+                    placeholder="Check-In">
                 <label class="errorLabel" id="arrivalDateError"></label>
                 <br>
                 <label for="txtDepartureDate" class="text-white">Check-Out</label>
-                <input type="date" class="form-control" id="txtDepartureDate" data-date-format="dd/mm/yyyy" placeholder="Check-out">
+                <input type="date" class="form-control" id="txtDepartureDate" data-date-format="dd/mm/yyyy"
+                    placeholder="Check-out">
                 <label class="errorLabel" id="departDateError"></label>
                 <br>
                 <label for="txtGuests" class="text-white">Number of guests</label>
                 <input type="tel" min="0" max="20" class="form-control" id="txtGuests" placeholder="0">
                 <label class="errorLabel" id="guestError"></label>
                 <br>
+                <button type="submit" id="btnbooking" class="btn btn-primary float-right"
+                    onclick="showBookingAboutYou()">Next</button>
+            </div>
+        </div>
+    </div>
 
+    <!------------------------- About you ------------------------->
+    <div class="container" id="bookingAboutYou" style="display: none;">
+        <div class="float-left p-4 rounded" style="width: 450px; background-color: rgba(0, 0, 0, 0.400);">
+            <h3 class="text-light text-center">Make a Booking</h3>
 
+            <ul class="progressbar container-md">
+                <li class="active" onclick="showBookingDetails()">Booking Details</li>
+                <li class="active" onclick="showBookingAboutYou()">Your Details</li>
+                <li>Payment</li>
+                <li>Confirmation</li>
+            </ul>
+            <br><br>
+
+            <div class="form-group mt-4">
+                <input type="text" class="form-control" id="txtFirstName" placeholder="First name" required>
+                <label for="txtFirstName" class="errorLabel" id="fNameError"></label>
+                <br>
+                <input type="text" class="form-control" id="txtLastName" placeholder="Last name" required>
+                <label for="txtLastName" class="errorLabel" id="lNameError"></label>
+                <br>
+                <input type="tel" class="form-control" id="txtPhone" placeholder="Phone number" required>
+                <label for="txtPhone" class="errorLabel" id="phoneError"></label>
+                <br>
+                <input type="email" class="form-control" id="txtEmail" placeholder="name@example.com" required>
+                <label for="txtEmail" class="errorLabel" id="emailError"></label>
+                <a class="nav-link text-center text-white-50" onclick="showTermsAndConditions()">Terms and
+                    conditions</a>
+                <br>
                 <button type="submit" id="btnbooking" class="btn btn-primary float-left"
-                    onclick="showBookingAboutYou()">Previous</button>
+                    onclick="showBookingDetails()">Previous</button>
                 <button type="submit" id="btnbooking" class="btn btn-primary float-right"
                     onclick="showBookingPayment()">Next</button>
             </div>
         </div>
     </div>
 
+  
     <!------------------------- Payment ------------------------->
     <div class="container" id="bookingPayment" style="display: none;">
         <div class="float-left p-4 rounded" style="width: 450px; background-color: rgba(0, 0, 0, 0.400);">
             <h3 class="text-light text-center">Make a Booking</h3>
 
             <ul class="progressbar container-md">
-                <li class="active" onclick="showBookingAboutYou()">Your Details</li>
                 <li class="active" onclick="showBookingDetails()">Booking Details</li>
+                <li class="active" onclick="showBookingAboutYou()">Your Details</li>
                 <li class="active" onclick="showBookingPayment()">Payment</li>
                 <li>Confirmation</li>
             </ul>
@@ -156,8 +158,9 @@
                 </div>
                 <br>
                 <button type="submit" id="btnbooking" class="btn btn-primary float-left"
-                    onclick="showBookingDetails()">Previous</button>
-                <button type="submit" id="btnbooking" class="btn btn-primary float-right" onclick="writedata()">Pay
+                    onclick="showBookingAboutYou()">Previous</button>
+                <button type="submit" id="btnbooking" class="btn btn-primary float-right"
+                    onclick="writedata()">Pay
                     Now</button>
             </div>
         </div>
@@ -169,8 +172,8 @@
             <h3 class="text-success text-center">Booking confirmed!</h3>
 
             <ul class="progressbar container-md">
-                <li class="active">Your Details</li>
                 <li class="active">Booking Details</li>
+                <li class="active">Your Details</li>
                 <li class="active">Payment</li>
                 <li class="active">Confirmation</li>
             </ul>
@@ -211,9 +214,9 @@
                     onclick="showBookingAboutYou()">Ok</button>
             </div>
         </div>
-        
+
     </div>
-    
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-firestore.js"></script>
@@ -259,16 +262,23 @@
 
         function checkAvailability() {
             //read data firestore
+
+
+            console.log("CHECKING AVAILABILITY")
+
             var bookings = db.collection("Booking");
 
-              bookings.get().then(function (querySnapshot) {
-                  querySnapshot.forEach(bookings => {
-                    console.log("Name: " + bookings.data().FirstName, "\nPhone: " + bookings.data().CheckInDate);
-                          if(bookings.data().CheckInDate == checkInDate) {
-                            console.log("Not Available");
-                          } 
-                  });
-              });
+            bookings.where('CheckInDate', '<=', checkInDate).get.where('CheckOutDate', '<=', checkOutDate).get().then(function (querySnapshot) {
+                if (querySnapshot.empty) {
+                    console.log("Available");
+                } else {
+                    console.log("Not Available");
+                }
+                //  querySnapshot.forEach(bookings => {
+
+                //  });
+            });
+
         }
     </script>
 
