@@ -11,6 +11,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <script type="text/javascript" src="./js/myjscripts.js"></script>
+    <!-- calender files -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script src="./js/evo-calendar.min.js"></script>
 </head>
 
 <body class="bg">
@@ -74,7 +77,7 @@
                 <label class="errorLabel" id="guestError"></label>
                 <br>
                 <button type="submit" id="btnbooking" class="btn btn-primary float-right"
-                    onclick="showBookingAboutYou()">Next</button>
+                    onclick="hello()">Next</button>
             </div>
         </div>
     </div>
@@ -241,6 +244,7 @@
         var db = firebase.firestore();
 
         function writedata() {
+            hello();
             //write data firestore 
             db.collection("Booking").add({
                 FirstName: fName,

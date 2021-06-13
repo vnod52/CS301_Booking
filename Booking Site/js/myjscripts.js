@@ -127,3 +127,23 @@ function resetErrorMsg() {
     document.getElementById("departDateError").innerHTML = "";
     document.getElementById("guestError").innerHTML = "";
 }
+
+//add unavailable dates to calender
+var mcalendarEvents = [];
+function hello() {
+    console.log("Hello world!! Add event");
+    for(let x = 1; x < 5; x++){
+    mcalendarEvents.push({
+      id: 'event1', // Event's ID (required)
+      name: "aaaa Year", // Event name (required)
+      date: "January/ " + x +"/2020", // Event date (required)
+      description: "My Happy New year peeps!!",
+      type: "holiday", // Event type (required)
+      everyYear: true // Same event every year (optional)
+  });
+}
+  console.log(mcalendarEvents);
+  sessionStorage.setItem("mEvents", JSON.stringify(mcalendarEvents));
+
+
+}

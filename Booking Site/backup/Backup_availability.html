@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="./css/evo-calendar.midnight-blue.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
-    <script src="./js/myjscripts.js"></script>
-
+   <script src="./js/myjscripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
     <script src="./js/evo-calendar.min.js"></script>
 </head>
@@ -57,27 +56,33 @@
         <div class="evoCalender">
             <div id="calendar"></div>
         </div>
-
     </div>
-
+    
     <script>
         console.log("should print");
         if(sessionStorage.getItem("mEvents")){
-            mcalendarEvents = JSON.parse(sessionStorage.getItem("mEvents"));
+            mcalendarEvents = sessionStorage.getItem("mEvents");
 
         }
-
+        console.log(mcalendarEvents);
+        //TODO: Access the event list, use loop and populate the data
         // Intialize calender
-                                mcalendarEvents.push({
-                                    id: 'event1', // Event's ID (required)
-                                    name: "AAA Year", // Event name (required)
-                                    date: "January/2/2020", // Event date (required)
-                                    description: "My Happy New year peeps!!",
-                                    type: "holiday", // Event type (required)
-                                    everyYear: true // Same event every year (optional)
-                                });
-                                
-
+        mcalendarEvents.push({
+                        id: 'event1', // Event's ID (required)
+                        name: "bbbb Year", // Event name (required)
+                        date: "January/1/2020", // Event date (required)
+                        description: "Happy New year peeps!!",
+                        type: "holiday", // Event type (required)
+                        everyYear: true // Same event every year (optional)
+                    });
+        mcalendarEvents.push({
+                        name: "Vacation Leave",
+                        badge: "02/13 - 02/15", // Event badge (optional)
+                        date: ["February/13/2020", "February/15/2020"], // Date range
+                        description: "Vacation leave for 3 days.", // Event description (optional)
+                        type: "event",
+                        color: "#63d867" // Event custom color (optional)
+                    });
         $(document).ready(function () {
             $('#calendar').evoCalendar({
                 theme: "Midnight Blue",
@@ -104,7 +109,7 @@
                 //     }
                 // ]
 
-            });
+            })
         });
     </script>
 
