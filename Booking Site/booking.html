@@ -77,7 +77,7 @@
                 <label class="errorLabel" id="guestError"></label>
                 <br>
                 <button type="submit" id="btnbooking" class="btn btn-primary float-right"
-                    onclick="hello()">Next</button>
+                    onclick="showBookingAboutYou()">Next</button>
             </div>
         </div>
     </div>
@@ -163,8 +163,7 @@
                 <button type="submit" id="btnbooking" class="btn btn-primary float-left"
                     onclick="showBookingAboutYou()">Previous</button>
                 <button type="submit" id="btnbooking" class="btn btn-primary float-right"
-                    onclick="writedata()">Pay
-                    Now</button>
+                    onclick="writedata()">Pay Now</button>
             </div>
         </div>
     </div>
@@ -187,7 +186,7 @@
             </div>
             <div class="form-group mt-2">
                 <br>
-                <button type="submit" id="btnbooking" class="btn btn-primary float-right" onclick="goHome()">Ok</button>
+                <button type="submit" id="btnbooking" class="btn btn-primary float-right" onclick="addUnavailabilityToCal()">Ok</button>
             </div>
         </div>
     </div>
@@ -244,7 +243,6 @@
         var db = firebase.firestore();
 
         function writedata() {
-            hello();
             //write data firestore 
             db.collection("Booking").add({
                 FirstName: fName,
@@ -264,26 +262,29 @@
                 });
         }
 
-        function checkAvailability() {
-            //read data firestore
+        // function checkAvailability() {
+        //     //read data firestore
 
 
-            console.log("CHECKING AVAILABILITY")
+        //     console.log("CHECKING AVAILABILITY")
 
-            var bookings = db.collection("Booking");
+        //     var bookings = db.collection("Booking");
 
-            bookings.where('CheckInDate', '<=', checkInDate).get.where('CheckOutDate', '<=', checkOutDate).get().then(function (querySnapshot) {
-                if (querySnapshot.empty) {
-                    console.log("Available");
-                } else {
-                    console.log("Not Available");
-                }
-                //  querySnapshot.forEach(bookings => {
+        //     bookings.get().then(function (querySnapshot) {
+        //         querySnapshot.forEach(bookings => {
+        //             console.log("FName: " + bookings.data().FirstName, "\nLastName: " + bookings.data().LastName);
+        //         })
+        //     });
 
-                //  });
-            });
+        //     // bookings.where('CheckInDate', '<=', checkInDate).get.where('CheckOutDate', '<=', checkOutDate).get().then(function (querySnapshot) {
+        //     //     if (querySnapshot.empty) {
+        //     //         console.log("Available");
+        //     //     } else {
+        //     //         console.log("Not Available");
+        //     //     }
+        //     // });
 
-        }
+        // }
     </script>
 
 

@@ -22,7 +22,7 @@ function showBookingAboutYou() {
     checkOutDate = document.getElementById("txtDepartureDate").value;
     guests = document.getElementById("txtGuests").value;
 
-    //Get day for date and convert to int
+    //Get day from date and convert to int
     localchkInDay = new Date(checkInDate);
     localchkOutDay = new Date(checkOutDate);
     //Zero out time stamp to compare only date
@@ -129,21 +129,55 @@ function resetErrorMsg() {
 }
 
 //add unavailable dates to calender
-var mcalendarEvents = [];
-function hello() {
-    console.log("Hello world!! Add event");
-    for(let x = 1; x < 5; x++){
-    mcalendarEvents.push({
-      id: 'event1', // Event's ID (required)
-      name: "aaaa Year", // Event name (required)
-      date: "January/ " + x +"/2020", // Event date (required)
-      description: "My Happy New year peeps!!",
-      type: "holiday", // Event type (required)
-      everyYear: true // Same event every year (optional)
-  });
+function addUnavailabilityToCal() {
+    //read data firestore
+    console.log("CHECKING AVAILABILITY")
+    var fN, lN, pH, chkIn, chkOut, fsChkIn, fsChkOut;
+    var bookings = db.collection("Booking");
+    var mcalendarEvents = [];
+
+    bookings.get().then(function (querySnapshot) {
+        querySnapshot.forEach(bookings => {
+            //Get data from firestore and save to local variables
+            fN = bookings.data().FirstName;
+            lN = bookings.data().LastName;
+            pH = bookings.data().Phone;
+
+            fsChkIn = bookings.data().CheckInDate;
+            fsChkOut = bookings.data().CheckOutDate;
+            //Get day from date and convert to int
+            chkIn = new Date(fsChkIn);
+            chkOut = new Date(fsChkOut);
+            //Zero out time stamp to compare only date
+            chkIn.setHours(0, 0, 0, 0);
+            chkOut.setHours(0, 0, 0, 0);
+            
+            console.log("ADDED DATE");
+            repeat();
+        })
+        //Store data in JSON format to be used in availability page
+        sessionStorage.setItem("mEvents", JSON.stringify(mcalendarEvents));
+    });
+    function repeat() {
+        //Minus 1 from date to begin booking from first day
+        chkIn = new Date(chkIn.setDate(chkIn.getDate() - 1));
+        while (chkIn.getDate() < chkOut.getDate()) {
+            mcalendarEvents.push({
+                id: 'event1', // Event's ID (required)
+                name: fN + " " + lN, // Event name (required)
+                date: chkIn, // Event date (required)
+                description: "Booking : " + fsChkIn.getDate(),
+                type: "event", // Event type (required)
+                everyYear: false // Same event every year (optional)
+            });
+            console.log("Aa" + chkIn);
+            chkIn = new Date(chkIn.setDate(chkIn.getDate() + 1));
+        }  
+    }
+    
+    //setTimeout(goHome, 1000);
+
 }
-  console.log(mcalendarEvents);
-  sessionStorage.setItem("mEvents", JSON.stringify(mcalendarEvents));
 
 
-}
+
