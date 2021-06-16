@@ -14,6 +14,13 @@
     <!-- calender files -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
     <script src="./js/evo-calendar.min.js"></script>
+    <!-- send mail files -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("user_OhKICECg8dKDH5gjrkKTq");
+        })();
+    </script>
 </head>
 
 <body class="bg">
@@ -259,6 +266,22 @@
                 .catch((error) => {
                     console.error("Error adding document: ", error);
                 });
+                sendMail();
+        }
+        //Send confirmation email with details
+        function sendMail(params) {
+            var tempParams = {
+                to_name: fName,
+                message: "First Name: " + fName + "\r\n" +
+                         "Last Name: " + lName + "\r\n" +
+                         "Check-In: " + checkInDate + "\r\n" +
+                         "Check-Out: " + checkOutDate + "\rn" +
+                         "No guest: " + guests + "\r\n",
+
+            };
+            emailjs.send('gmail', 'template_9tbkt1m', tempParams).then(function (res) {
+                console.log("Email send success", res.status);
+            });
         }
     </script>
 </body>
