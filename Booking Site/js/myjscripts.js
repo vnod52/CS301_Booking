@@ -2,6 +2,9 @@
 //Global booking variables
 var fName, lName, phone, email, checkInDate, checkOutDate, guests, localchkInDay, localchkOutDay;
 
+//Array to store retrieved firebase data
+var mcalendarEvents = [];
+
 // show booking details div and save user inputs
 function showBookingDetails() {
 
@@ -129,12 +132,11 @@ function resetErrorMsg() {
 }
 
 //add unavailable dates to calender
-function addUnavailabilityToCal() {
+function retrieveAndUpdateCal() {
     //read data firestore
     console.log("CHECKING AVAILABILITY")
     var fN, lN, pH, chkIn, chkOut, fsChkIn, fsChkOut;
     var bookings = db.collection("Booking");
-    var mcalendarEvents = [];
 
     bookings.get().then(function (querySnapshot) {
         querySnapshot.forEach(bookings => {
@@ -151,7 +153,7 @@ function addUnavailabilityToCal() {
             //Zero out time stamp to compare only date
             chkIn.setHours(0, 0, 0, 0);
             chkOut.setHours(0, 0, 0, 0);
-            
+
             console.log("ADDED DATE");
             repeat();
         })
@@ -166,17 +168,16 @@ function addUnavailabilityToCal() {
                 id: 'event1', // Event's ID (required)
                 name: fN + " " + lN, // Event name (required)
                 date: chkIn, // Event date (required)
-                description: "Booking : " + fsChkIn.getDate(),
+                description: "Booking : " + chkIn.toLocaleDateString() + " - " + chkOut.toLocaleDateString(),
                 type: "event", // Event type (required)
                 everyYear: false // Same event every year (optional)
             });
             console.log("Aa" + chkIn);
             chkIn = new Date(chkIn.setDate(chkIn.getDate() + 1));
-        }  
+        }
     }
-    
-    //setTimeout(goHome, 1000);
-
+    //redirect to home page after 2 secs
+    setTimeout(goHome, 2000);
 }
 
 

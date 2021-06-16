@@ -31,7 +31,7 @@
                         <a class="nav-link" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./about.html">About Us</a>
+                        <a class="nav-link" href="./about.html">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./booking.html">Booking</a>
@@ -47,9 +47,8 @@
         </nav>
         <br>
     </div>
-
-      <!------------------------- Booking details ------------------------->
-      <div class="container" id="bookingDetails">
+    <!------------------------- Booking details ------------------------->
+    <div class="container" id="bookingDetails">
         <div class="float-left p-4 rounded" style="width: 450px; background-color: rgba(0, 0, 0, 0.400);">
             <h3 class="text-light text-center">Make a Booking</h3>
 
@@ -118,7 +117,7 @@
         </div>
     </div>
 
-  
+
     <!------------------------- Payment ------------------------->
     <div class="container" id="bookingPayment" style="display: none;">
         <div class="float-left p-4 rounded" style="width: 450px; background-color: rgba(0, 0, 0, 0.400);">
@@ -162,8 +161,8 @@
                 <br>
                 <button type="submit" id="btnbooking" class="btn btn-primary float-left"
                     onclick="showBookingAboutYou()">Previous</button>
-                <button type="submit" id="btnbooking" class="btn btn-primary float-right"
-                    onclick="writedata()">Pay Now</button>
+                <button type="submit" id="btnbooking" class="btn btn-primary float-right" onclick="writedata()">Pay
+                    Now</button>
             </div>
         </div>
     </div>
@@ -186,7 +185,8 @@
             </div>
             <div class="form-group mt-2">
                 <br>
-                <button type="submit" id="btnbooking" class="btn btn-primary float-right" onclick="addUnavailabilityToCal()">Ok</button>
+                <button type="submit" id="btnbooking" class="btn btn-primary float-right"
+                    onclick="retrieveAndUpdateCal()">Ok</button>
             </div>
         </div>
     </div>
@@ -218,7 +218,6 @@
         </div>
 
     </div>
-
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-firestore.js"></script>
@@ -261,35 +260,7 @@
                     console.error("Error adding document: ", error);
                 });
         }
-
-        // function checkAvailability() {
-        //     //read data firestore
-
-
-        //     console.log("CHECKING AVAILABILITY")
-
-        //     var bookings = db.collection("Booking");
-
-        //     bookings.get().then(function (querySnapshot) {
-        //         querySnapshot.forEach(bookings => {
-        //             console.log("FName: " + bookings.data().FirstName, "\nLastName: " + bookings.data().LastName);
-        //         })
-        //     });
-
-        //     // bookings.where('CheckInDate', '<=', checkInDate).get.where('CheckOutDate', '<=', checkOutDate).get().then(function (querySnapshot) {
-        //     //     if (querySnapshot.empty) {
-        //     //         console.log("Available");
-        //     //     } else {
-        //     //         console.log("Not Available");
-        //     //     }
-        //     // });
-
-        // }
     </script>
-
-
 </body>
-
-
 
 </html>

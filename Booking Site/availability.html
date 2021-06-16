@@ -35,7 +35,7 @@
                         <a class="nav-link" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./about.html">About Us</a>
+                        <a class="nav-link" href="./about.html">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./booking.html">Booking</a>
@@ -61,7 +61,7 @@
     <script>
         //Retrieve data from myscript function in JSON format
         console.log("should print");
-        if(sessionStorage.getItem("mEvents")){
+        if (sessionStorage.getItem("mEvents")) {
             mcalendarEvents = JSON.parse(sessionStorage.getItem("mEvents"));
         }
         console.log(JSON.stringify(mcalendarEvents));
